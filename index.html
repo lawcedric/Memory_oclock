@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Candy Memory</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+    <!-- EXPLICATION
+         ---------------
+         1) On crée une div qui va contenir l'intégralité de la page (class: conteneur, pour le graphisme)
+         2) 0n crée le plateau de jeux qui regroupera l'ensemble des cartes (class : memory-board)
+         3) On crée un article pour chaques cartes (class : memory-card)
+            TRES IMPORTANT : chaque article devra avoir un attribut data-image.
+            Car, on en a besoin pour l'identifier et le récuperer en javascript
+         4) Chaque carte contiendra un recto (class: front-card) et un verso (class:back-card). On aura la
+         class: card_settings pour la personnalisation de la carte
+
+
+         -->
+        <div class="conteneur">
+            <section class="memory-board">
+                    <article class="memory-card" data-image="apple">
+                        <div class="front-card"></div>
+                        <div class="back-card1 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="apple">
+                        <div class="front-card"></div>
+                        <div class="back-card1 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="banana">
+                        <div class="front-card"></div>
+                        <div class="back-card2 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="banana">
+                        <div class="front-card"></div>
+                        <div class="back-card2 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="orange">
+                        <div class="front-card"></div>
+                        <div class="back-card3 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="orange">
+                        <div class="front-card"></div>
+                        <div class="back-card3 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="greenlemon">
+                        <div class="front-card"></div>
+                        <div class="back-card4 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="greenlemon">
+                        <div class="front-card"></div>
+                        <div class="back-card4 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="pomegranate">
+                        <div class="front-card"></div>
+                        <div class="back-card5 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="pomegranate">
+                        <div class="front-card"></div>
+                        <div class="back-card5 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="peach">
+                        <div class="front-card"></div>
+                        <div class="back-card6 card_settings"></div>
+                    </article>
+                    <article class="memory-card" data-image="peach">
+                        <div class="front-card"></div>
+                        <div class="back-card6 card_settings"></div>
+                    </article>
+                <article class="memory-card" data-image="lemon">
+                    <div class="front-card"></div>
+                    <div class="back-card7 card_settings"></div>
+                </article>
+                <article class="memory-card" data-image="lemon">
+                    <div class="front-card"></div>
+                    <div class="back-card7 card_settings"></div>
+                </article>
+                <article class="memory-card" data-image="strawberry">
+                    <div class="front-card"></div>
+                    <div class="back-card8 card_settings"></div>
+                </article>
+                <article class="memory-card" data-image="strawberry">
+                    <div class="front-card"></div>
+                    <div class="back-card8 card_settings"></div>
+                </article>
+            </section>
+            <img id="restart" src="img/restart-02.png">
+        </div>
+        <script type="text/javascript" src="js/myscript.js"></script>
+    </body>
+</html>

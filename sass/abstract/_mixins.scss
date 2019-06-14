@@ -1,0 +1,34 @@
+/* EXPLICATION DE L'IMPORT DES SPRITES
+ --------------------------
+1) la mixin backcard-bgk permet de mettre une image de fond et une couleur basique
+2) la mixin box-shadow permet de faire des ombres de portés (voir https://www.cssmatic.com/box-shadow)
+3) La mixin reset permet de réinitialiser les margin et les paddings (voir le reset complet ici : https://meyerweb.com/eric/tools/css/reset/)
+4) La mixin card-transform permet de jouer sur les effets de CSS3 (voir ici pour plus d'effet : https://www.w3schools.com/cssref/css3_pr_transform.asp)
+
+*/
+
+@mixin backcard-bgk{
+  background-image: url("../img/frontcards-03.png");
+  background-color: #8AD1BD;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+}
+
+@mixin box-shadow{
+  -webkit-box-shadow: 10px 10px 5px -8px rgba(56,52,56,1);
+  -moz-box-shadow: 10px 10px 5px -8px rgba(56,52,56,1);
+  box-shadow: 10px 10px 5px -8px rgba(56,52,56,1);
+}
+
+@mixin reset{
+  margin: 0;
+  padding: 0;
+}
+
+@mixin card-transform{
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  transition: transform 1s;
+}

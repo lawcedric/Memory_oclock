@@ -1,0 +1,140 @@
+/* EXPLICATION DES IMPORTS
+ --------------------------
+ 1) Import des images en background (voir le fichier "abstract/backcard.scss")
+ 2) Création de Mixins (pour plus d'info :  https://sass-lang.com/documentation/at-rules/mixin)
+ pour plus de propreté
+ NB: Le SASS permet de mimifier notre CSS (enlever les espaces et les sauts de ligne pour le rendre plus léger.
+ De plus, SASS met automatiquement les webkit pour la retro-compatibilité avec les autres navigateurs
+ */
+
+@import "abstract/backcard.scss";
+@import "abstract/mixins.scss";
+
+/* EXPLICATION DES DIFFERENTS CONTENEURS
+ --------------------------
+1) Body =>
+      - On include notre mixin crée précédement pour remettre les marges à 0. (voir : https://sass-lang.com/documentation/at-rules/mixin)
+      - On intégre notre image de fond et cover lui permet de prendre tout l'espace.
+      (Pour plus d'info sur la proprièté background voir : https://www.w3schools.com/cssref/css3_pr_background.asp)
+      - TRES IMPORTANT : On fait un display flex pour pouvoir jouer avec ces propriètés ...
+      (Pour  apprendre l'utilisation de flexbox je vous partage ce petit jeux: http://flexboxfroggy.com/#fr)
+      - On met notre height à 100vh (viewport) afin de pouvoir centrer notre prochain élèment. (1vh = 1%)
+*/
+
+body{
+  @include reset();
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+}
+/* EXPLICATION DES DIFFERENTS CONTENEURS
+ --------------------------
+  1) Conteneur principal =>
+      - margin : auto pour mettre la meme distance en hauteur et en largeur (centrage)
+      - n'oubliez pas de toujours mettre une height et une width afin que votre élèment s'affiche correctement (erreur fréquente)
+      les unités de mesure existante sont : em, px, %; vh ( si vous êtes curieu(se), Google est votre amis)
+
+ */
+
+.conteneur{
+  margin: auto;
+  height: 700px;
+  width: 900px;
+  background: url("../img/border.png") no-repeat center;
+  background-size: 705px;
+}
+
+/* EXPLICATION DES DIFFERENTS CONTENEURS
+ --------------------------
+  1) Conteneur memory_board =>
+      - margin: auto pour le centrage sur la largeur et margin-top pour le placer en hauteur
+      - flex-wrap : Fonctionnalité de flexbox qui permet de faire un retour à la ligne quand l'écran se rétrécie
+      (très pratique pour le responsive :P)
+      - Perspective : cela permet de mettre de la profondeur sur un plan et du coup de pouvoir jouer sur
+      les effets css3 de 3D (voir : https://www.w3schools.com/css/css3_3dtransforms.asp)
+      - Border-radius pour arrondir les angles
+*/
+
+.memory-board{
+  margin: auto;
+  display:flex;
+  flex-wrap: wrap;
+  width: 503px;
+  height: 500px;
+  perspective: 1000px;
+  border-radius: 10px;
+  margin-top: 125px;
+}
+
+/* EXPLICATION DES DIFFERENTS CONTENEURS
+ --------------------------
+  memory-card, front-card, card_settings =>
+      - on a mis une width de 20.65% .. c'est 20.65% pourcent de son conteneur Memory_board. On a aussi fait
+      un calc -1 pour pouvoir prendre en compte la marge à droite et à gauche
+      - margin : pour espacer les cartes de 10 px
+      - Une flexbox ici pour mettre le recto et le verso cote à cote
+      - Position relative  pour que le recto/verso se positionne par rapport à ce conteneur
+      (front-card et card_settings seront en position : absolute pour qu'elle se place l'une sur l'autre)
+      -  On retourne la carte avec transform:rotateY(180deg)... Initialisation
+      - notre include card-transform() recupère les animations qu'on a crée dans notre mixin ("abstract/mixins.scss")
+      -  nos includes backcard-bgk() et box-shadow() récupère le style qu'on a crée dans notre mixin ("abstract/mixins.scss")
+      - cursor pointer en hover, pour que notre curseur apparait différent lors du passge de la souris
+ */
+
+.memory-card{
+  width: calc(20.65% - 1px);
+  margin: 10px;
+  display: flex;
+  position: relative;
+  @include card-transform();
+  .front-card{
+    @extend %position;
+    width: 100%;
+    height: 100%;
+    transform:rotateY(180deg);
+    @include backcard-bgk();
+    @include box-shadow();
+  }
+  .card_settings{
+    @extend %position;
+    width: 103px;
+    height: 103px;
+    background-image: url("../img/cards.png");
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+/* EXPLICATION DES DIFFERENTS CONTENEURS
+ --------------------------
+  %position pour front_card ou card_setting =>
+  - le % permet de dire que ces propriètés ne sont pas prise en compte sauf si on utilise un extend (voir : https://sass-lang.com/documentation/at-rules/extend)
+  - Position absolute.. pour que nos deux faces se positionne par rapport à memory_card
+  - backface-visibility: hidden sert à cacher l'autre face lorsque la carte est soit recto soit verso
+*/
+
+%position {
+  border-radius: 15px;
+  position:absolute;
+  backface-visibility: hidden;
+}
+/* EXPLICATION DES DIFFERENTS CONTENEURS
+ --------------------------
+  - la class: flip se créera en javascript au moment ou on cliquera sur la class .memory-card.
+  Elle permettra de faire une rotation de se tourner.
+ */
+
+.memory-card.flip{
+  transform: rotateY(0deg);
+}
+
+/* Bouton pour recommencer */
+
+#restart{
+  width: 100px;
+}
+
+
+

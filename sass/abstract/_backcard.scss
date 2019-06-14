@@ -1,0 +1,44 @@
+/* EXPLICATION DE L'IMPORT DES SPRITES
+ --------------------------
+  NB: Lorsque l'on conçoit un jeux, on cherche le maximun de légèreter.
+  C'est pourquoi, on préfére importer nos images en CSS.
+
+  1) Ici, nous avons une seule image composé de 19 sprites en verticale.
+  Du coup, il nous suffira juste de donner une class: card-back1, card-back2 etc
+  (une class et non une id car chaque carte est en double)
+ 2) Chaque class aura un background-position différent. On enlèvera 100px sur l'axe Y .. si
+ on rajoute 100px on arriverait à la dernière image.
+
+ */
+
+.back-card1 {
+  background-position: 0 0;
+}
+
+.back-card2{
+  background-position: 0  -100px;
+}
+
+.back-card3{
+  background-position: 0 -200px;
+}
+
+.back-card4{
+  background-position: 0 -300px;
+}
+
+.back-card5{
+  background-position: 0 -400px;
+}
+
+.back-card6{
+  background-position: 0 -500px;
+}
+
+.back-card7{
+  background-position: 0 -600px;
+}
+
+.back-card8{
+  background-position: 0 -700px;
+}
